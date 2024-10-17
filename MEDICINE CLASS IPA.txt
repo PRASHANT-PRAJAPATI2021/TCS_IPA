@@ -1,0 +1,121 @@
+Create class Medicine with below attributes: 
+
+MedicineName - String 
+batch - String 
+disease - String 
+price - int
+
+Create class Solution and implement static method "getPriceByDisease" in the Solution class. 
+This method will take array of Medicine objects and a disease String as parameters. 
+And will return another sorted array of Integer objects where the disease String matches with the 
+original array of Medicine object's disease attribute (case insensitive search).
+
+Write necessary getters and setters.
+
+Before calling "getPriceByDisease" method in the main method, read values for four Medicine objects 
+referring the attributes in above sequence along with a String disease. Then call the "getPriceByDisease" 
+method and print the result.
+
+Input
+-------------
+
+dolo650
+FAC124W
+fever
+100
+paracetamol
+PAC545B
+bodypain
+150
+almox
+ALM747S
+fever
+200
+aspirin
+ASP849Q
+flu
+250
+fever
+
+Output
+---------
+100
+200
+
+
+
+-------------------------------------------------------------
+
+SOLUTINO IS WRITTEN BELOW----------------------
+
+---------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.*;
+
+
+
+public class Solution{
+  public static void main(String[] args){
+    Scanner sc = new Scanner(System.in);
+    Medicine[] arr = new Medicine[4];
+    for(int i = 0; i<arr.length; i++){
+      String a = sc.nextLine();
+      String b = sc.nextLine();
+      String c = sc.nextLine();
+      int d = sc.nextInt();
+      sc.nextLine();
+      
+      arr[i] = new Medicine(a, b, c, d);
+      
+    }
+    
+    String inputDisease = sc.nextLine();
+    
+    getPriceByDisease(arr, inputDisease);
+    
+    
+  }
+  
+  static void getPriceByDisease(Medicine[] arr, String inputDisease){
+    ArrayList<Integer> ans = new ArrayList<Integer>();
+    for(int i = 0; i<arr.length; i++){
+      if(arr[i].disease.equalsIgnoreCase(inputDisease)){
+        ans.add(arr[i].price);
+      }
+    }
+    Collections.sort(ans);
+    for(int i = 0; i<ans.size(); i++){
+      System.out.println(ans.get(i));
+    }
+  }
+}
+
+
+
+
+class Medicine{
+  String MedicineName;
+  String batch;
+  String disease;
+  int price;
+  
+  public Medicine(String MedicineName, String batch, String disease, int price){
+    this.MedicineName = MedicineName;
+    this.batch = batch;
+    this.disease = disease;
+    this.price = price;
+  }
+  
+}
